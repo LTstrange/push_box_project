@@ -26,3 +26,17 @@ def In_target():
         tar = [int(i) for i in tar_str.split(' ')]
         T_target.append(tar)
         t_num += 1
+
+
+def In_corners():
+    print("""请辅助输入地图的角落位置：
+    输入形式与目标输入的格式一致，输入完毕后，请键入“end”以结束输入""")
+    c_num = 1
+    T_corners = []
+    while True:
+        cor_str = input('cor%d:' % (c_num))
+        if cor_str == 'end':
+            return T_corners
+        cor = [int(x) for x in cor_str.split(' ')]
+        T_corners.append(cor)
+        c_num += 1
