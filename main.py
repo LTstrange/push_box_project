@@ -23,7 +23,7 @@ field=[[0, 0, 0, 0, 0, 0, 0, 0],
 
 # corners = 1,2 1,3 2,2 2,5 4,1 4,5 4,6 5,4 6,1 6,6
 
-CORNER = Find_corners(field, TARGET)
+# CORNER = Find_corners(field, TARGET)
 
 unit1 = Unit(field, [])
 
