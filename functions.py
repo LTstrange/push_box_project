@@ -11,6 +11,10 @@ def Find_corners(field, target):
                     corners.add((ind_y + 1, ind_x + 1))
                 if field[ind_y][ind_x+1] == 0 and field[ind_y+1][ind_x] == 0:
                     corners.add((ind_y + 1, ind_x + 1))
-    return corners
+    diff_s = set()
+    for each in corners:
+        if list(each) in target:
+            diff_s.add(each)
+    return corners - diff_s
 
 
