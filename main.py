@@ -4,6 +4,9 @@ from IO import In_field, In_target, answer
 from functions import Find_corners, check_goal, move_step
 
 
+PASS_FIELD = set()
+
+
 # pre_field = In_field()
 #
 # TARGET = In_target()
@@ -19,7 +22,7 @@ field=[[0, 0, 0, 0, 0, 0, 0, 0],
        [0, 1, 1, 1, 1, 2, 1, 0],
        [0, 0, 0, 0, 0, 0, 0, 0]]
 
-TARGET = [[4, 3], [5, 1], [6, 5]]
+TARGET = [[4, 1], [5, 1], [6, 1]]
 
 # corners = 1,2 1,3 2,2 2,5 4,1 4,5 4,6 5,4 6,1 6,6
 
@@ -27,11 +30,8 @@ CORNER = Find_corners(field, TARGET)
 
 iter = Iter(field, [])
 
-answer(iter.way)
+PASS_FIELD.add(iter)
 
 iter = move_step(iter, 2)[1]
 
-answer(iter.way)
-
-
-
+print(iter in PASS_FIELD)

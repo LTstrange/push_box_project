@@ -14,6 +14,6 @@ class Iter(object):
         return self.field == other.field
 
     def __hash__(self):
-        return hash(tuple(self.field))
+        return hash(tuple([tuple(i) for i in self.field]))
 
 

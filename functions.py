@@ -27,6 +27,9 @@ def check_goal(field, target):
     return True
 
 
+# def cut_branch(iter, )
+
+
 def move_step(iter, step):
     """
     函数内声明：
