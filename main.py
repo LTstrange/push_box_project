@@ -1,10 +1,12 @@
 import multiprocessing
 from Iter import Iter
-from IO import In_field
+from IO import In_field, In_target
 
 
-l = In_field()
+pre_field = In_field()
 
-print(l)
+TARGET = In_target()
+
+print(TARGET)
 
 
