@@ -27,75 +27,75 @@ def check_goal(field, target):
     return True
 
 
-# def cut_branch(iter, )
+# def cut_branch(unit, PASS_field)
 
 
-def move_step(iter, step):
+def move_step(unit, step):
     """
     函数内声明：
     本函数内部使用0 1 2 3，来定义上下左右的移动方向。
     其中 0对应向上U，1对应向右R，2对应向下D，3对应向左L
     :return: 移动是否有效, 新的状态
     """
-    point = iter.find_point()
+    point = unit.find_point()
     if step == 0:
-        if iter.field[point[0] - 1][point[1]] == 1:
-            iter.field[point[0] - 1][point[1]] = 3
-            iter.field[point[0]][point[1]] = 1
-            iter.way.append(step)
-        elif iter.field[point[0] - 1][point[1]] == 2:
-            if iter.field[point[0] - 2][point[1]] == 1:
-                iter.field[point[0] - 2][point[1]] = 2
-                iter.field[point[0] - 1][point[1]] = 3
-                iter.field[point[0]][point[1]] = 1
-                iter.way.append(step)
+        if unit.field[point[0] - 1][point[1]] == 1:
+            unit.field[point[0] - 1][point[1]] = 3
+            unit.field[point[0]][point[1]] = 1
+            unit.way.append(step)
+        elif unit.field[point[0] - 1][point[1]] == 2:
+            if unit.field[point[0] - 2][point[1]] == 1:
+                unit.field[point[0] - 2][point[1]] = 2
+                unit.field[point[0] - 1][point[1]] = 3
+                unit.field[point[0]][point[1]] = 1
+                unit.way.append(step)
             else:
                 return False, 0
         else:
             return False, 0
     elif step == 1:
-        if iter.field[point[0]][point[1] + 1] == 1:
-            iter.field[point[0]][point[1] + 1] = 3
-            iter.field[point[0]][point[1]] = 1
-            iter.way.append(step)
-        elif iter.field[point[0]][point[1] + 1] == 2:
-            if iter.field[point[0]][point[1] + 2] == 1:
-                iter.field[point[0]][point[1] + 2] = 2
-                iter.field[point[0]][point[1] + 1] = 3
-                iter.field[point[0]][point[1]] = 1
-                iter.way.append(step)
+        if unit.field[point[0]][point[1] + 1] == 1:
+            unit.field[point[0]][point[1] + 1] = 3
+            unit.field[point[0]][point[1]] = 1
+            unit.way.append(step)
+        elif unit.field[point[0]][point[1] + 1] == 2:
+            if unit.field[point[0]][point[1] + 2] == 1:
+                unit.field[point[0]][point[1] + 2] = 2
+                unit.field[point[0]][point[1] + 1] = 3
+                unit.field[point[0]][point[1]] = 1
+                unit.way.append(step)
             else:
                 return False, 0
         else:
             return False, 0
     elif step == 2:
-        if iter.field[point[0] + 1][point[1]] == 1:
-            iter.field[point[0] + 1][point[1]] = 3
-            iter.field[point[0]][point[1]] = 1
-            iter.way.append(step)
-        elif iter.field[point[0] + 1][point[1]] == 2:
-            if iter.field[point[0] + 2][point[1]] == 1:
-                iter.field[point[0] + 2][point[1]] = 2
-                iter.field[point[0] + 1][point[1]] = 3
-                iter.field[point[0]][point[1]] = 1
-                iter.way.append(step)
+        if unit.field[point[0] + 1][point[1]] == 1:
+            unit.field[point[0] + 1][point[1]] = 3
+            unit.field[point[0]][point[1]] = 1
+            unit.way.append(step)
+        elif unit.field[point[0] + 1][point[1]] == 2:
+            if unit.field[point[0] + 2][point[1]] == 1:
+                unit.field[point[0] + 2][point[1]] = 2
+                unit.field[point[0] + 1][point[1]] = 3
+                unit.field[point[0]][point[1]] = 1
+                unit.way.append(step)
             else:
                 return False, 0
         else:
             return False, 0
     elif step == 3:
-        if iter.field[point[0]][point[1] - 1] == 1:
-            iter.field[point[0]][point[1] - 1] = 3
-            iter.field[point[0]][point[1]] = 1
-            iter.way.append(step)
-        elif iter.field[point[0]][point[1] - 1] == 2:
-            if iter.field[point[0]][point[1] - 2] == 1:
-                iter.field[point[0]][point[1] - 2] = 2
-                iter.field[point[0]][point[1] - 1] = 3
-                iter.field[point[0]][point[1]] = 1
-                iter.way.append(step)
+        if unit.field[point[0]][point[1] - 1] == 1:
+            unit.field[point[0]][point[1] - 1] = 3
+            unit.field[point[0]][point[1]] = 1
+            unit.way.append(step)
+        elif unit.field[point[0]][point[1] - 1] == 2:
+            if unit.field[point[0]][point[1] - 2] == 1:
+                unit.field[point[0]][point[1] - 2] = 2
+                unit.field[point[0]][point[1] - 1] = 3
+                unit.field[point[0]][point[1]] = 1
+                unit.way.append(step)
             else:
                 return False, 0
         else:
             return False, 0
-    return True, iter
+    return True, unit

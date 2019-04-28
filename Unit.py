@@ -1,4 +1,6 @@
-class Iter(object):
+class Unit(object):
+    PASS_FIELD = set()
+
     def __init__(self, field, way):
         self.field = field
         self.way = way
