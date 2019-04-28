@@ -27,9 +27,6 @@ def check_goal(field, target):
     return True
 
 
-# def cut_branch(unit, PASS_field)
-
-
 def move_step(unit, step):
     """
     函数内声明：
@@ -98,4 +95,7 @@ def move_step(unit, step):
                 return False, 0
         else:
             return False, 0
+    # # cut branchs and delete fail way
+    # if unit in unit.PASS_FIELD:
+    #     return False, 0
     return True, unit

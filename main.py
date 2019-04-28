@@ -19,7 +19,7 @@ field=[[0, 0, 0, 0, 0, 0, 0, 0],
        [0, 1, 1, 1, 1, 2, 1, 0],
        [0, 0, 0, 0, 0, 0, 0, 0]]
 
-TARGET = [[4, 1], [5, 1], [6, 1]]
+# TARGET = [[4, 1], [5, 1], [6, 1]]
 
 # corners = 1,2 1,3 2,2 2,5 4,1 4,5 4,6 5,4 6,1 6,6
 
@@ -29,16 +29,18 @@ unit1 = Unit(field, [])
 
 unit1.PASS_FIELD.add(unit1)
 
-unit2 = move_step(unit1, 2)[1]
+unit2 = move_step(unit1, 2)[1] # 这个可以确保unit类中的field变量被改变
 
 print(unit2.PASS_FIELD)
 
 unit2.PASS_FIELD.add(unit2)
 
-print(unit1 in unit2.PASS_FIELD)
+print(unit2.PASS_FIELD)
 
-unit3 = move_step(unit2, 0)[1]
+print(unit1, unit2)
 
-unit3.PASS_FIELD.remove(unit3)
-
-print(unit3.PASS_FIELD)
+# unit3 = move_step(unit2, 0)[1]
+#
+# unit3.PASS_FIELD.remove(unit3)
+#
+# print(unit3.PASS_FIELD)
