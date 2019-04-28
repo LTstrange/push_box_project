@@ -34,4 +34,65 @@ def move_step(iter, step):
     其中 0对应向上U，1对应向右R，2对应向下D，3对应向左L
     :return: 移动是否有效, 新的状态
     """
-    pass
+    point = iter.find_point()
+    if step == 0:
+        if iter.field[point[0] - 1][point[1]] == 1:
+            iter.field[point[0] - 1][point[1]] = 3
+            iter.field[point[0]][point[1]] = 1
+            iter.way.append(step)
+        elif iter.field[point[0] - 1][point[1]] == 2:
+            if iter.field[point[0] - 2][point[1]] == 1:
+                iter.field[point[0] - 2][point[1]] = 2
+                iter.field[point[0] - 1][point[1]] = 3
+                iter.field[point[0]][point[1]] = 1
+                iter.way.append(step)
+            else:
+                return False, 0
+        else:
+            return False, 0
+    elif step == 1:
+        if iter.field[point[0]][point[1] + 1] == 1:
+            iter.field[point[0]][point[1] + 1] = 3
+            iter.field[point[0]][point[1]] = 1
+            iter.way.append(step)
+        elif iter.field[point[0]][point[1] + 1] == 2:
+            if iter.field[point[0]][point[1] + 2] == 1:
+                iter.field[point[0]][point[1] + 2] = 2
+                iter.field[point[0]][point[1] + 1] = 3
+                iter.field[point[0]][point[1]] = 1
+                iter.way.append(step)
+            else:
+                return False, 0
+        else:
+            return False, 0
+    elif step == 2:
+        if iter.field[point[0] + 1][point[1]] == 1:
+            iter.field[point[0] + 1][point[1]] = 3
+            iter.field[point[0]][point[1]] = 1
+            iter.way.append(step)
+        elif iter.field[point[0] + 1][point[1]] == 2:
+            if iter.field[point[0] + 2][point[1]] == 1:
+                iter.field[point[0] + 2][point[1]] = 2
+                iter.field[point[0] + 1][point[1]] = 3
+                iter.field[point[0]][point[1]] = 1
+                iter.way.append(step)
+            else:
+                return False, 0
+        else:
+            return False, 0
+    elif step == 3:
+        if iter.field[point[0]][point[1] - 1] == 1:
+            iter.field[point[0]][point[1] - 1] = 3
+            iter.field[point[0]][point[1]] = 1
+            iter.way.append(step)
+        elif iter.field[point[0]][point[1] - 1] == 2:
+            if iter.field[point[0]][point[1] - 2] == 1:
+                iter.field[point[0]][point[1] - 2] = 2
+                iter.field[point[0]][point[1] - 1] = 3
+                iter.field[point[0]][point[1]] = 1
+                iter.way.append(step)
+            else:
+                return False, 0
+        else:
+            return False, 0
+    return True, iter

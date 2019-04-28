@@ -1,7 +1,7 @@
 import multiprocessing
 from Iter import Iter
 from IO import In_field, In_target, In_corners
-from functions import Find_corners, check_goal
+from functions import Find_corners, check_goal, move_step
 
 
 # pre_field = In_field()
@@ -27,9 +27,11 @@ CORNER = Find_corners(field, TARGET)
 
 iter = Iter(field, [])
 
-print(iter.point)
+print(iter.way)
 
+iter = move_step(iter, 1)[1]
 
+print(iter.way)
 
 
 
