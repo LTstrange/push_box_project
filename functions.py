@@ -18,3 +18,11 @@ def Find_corners(field, target):
     return corners - diff_s
 
 
+def check_goal(field, target):
+    for each in target:
+        if field[each[0]][each[1]] == 2:
+            continue
+        else:
+            return False
+    return True
+
