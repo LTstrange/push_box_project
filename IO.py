@@ -40,3 +40,16 @@ def In_corners():
         cor = [int(x) for x in cor_str.split(' ')]
         T_corners.append(cor)
         c_num += 1
+
+
+def answer(way):
+    print("解决方案：", end=' ')
+    for each in way:
+        if each == 0:
+            print('U', end=' ')
+        elif each == 1:
+            print('R', end=' ')
+        elif each == 2:
+            print('D', end=' ')
+        elif each == '3':
+            print('L', end=' ')
