@@ -26,3 +26,12 @@ def check_goal(field, target):
             return False
     return True
 
+
+def move_step(iter, step):
+    """
+    函数内声明：
+    本函数内部使用0 1 2 3，来定义上下左右的移动方向。
+    其中 0对应向上U，1对应向右R，2对应向下D，3对应向左L
+    :return: 移动是否有效, 新的状态
+    """
+    pass

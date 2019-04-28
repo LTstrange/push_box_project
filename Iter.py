@@ -1,9 +1,18 @@
 class Iter(object):
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, field, way):
+        self.field = field
+        self.way = way
+        self.point = self.find_point()
+
+    def find_point(self):
+        for ind_y, Ly in enumerate(self.field):
+            if 3 in Ly:
+                x = Ly.index(3)
+                y = ind_y
+        return [y, x]
 
     def __eq__(self, other):
-        return self.data[0] == other.data[0]
+        return self.field == other.field
 
     def __hash__(self):
-        return hash(tuple(self.data[0]))
+        return hash(tuple(self.field))

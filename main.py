@@ -25,11 +25,11 @@ TARGET = [[4, 3], [5, 1], [6, 5]]
 
 CORNER = Find_corners(field, TARGET)
 
-print(CORNER)
+iter = Iter(field, [])
 
-if check_goal(field, TARGET):
-    print("win!")
-else:
-    print("not win")
+print(iter.point)
+
+
+
 
 
