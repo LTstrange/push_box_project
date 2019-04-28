@@ -53,3 +53,4 @@ def answer(way):
             print('D', end=' ')
         elif each == '3':
             print('L', end=' ')
+    print()
