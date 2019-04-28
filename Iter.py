@@ -2,7 +2,6 @@ class Iter(object):
     def __init__(self, field, way):
         self.field = field
         self.way = way
-        self.point = self.find_point()
 
     def find_point(self):
         for ind_y, Ly in enumerate(self.field):
@@ -16,3 +15,5 @@ class Iter(object):
 
     def __hash__(self):
         return hash(tuple(self.field))
+
+
