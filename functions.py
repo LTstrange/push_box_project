@@ -27,7 +27,7 @@ def check_goal(field, target):
     return True
 
 
-def move_step(unit, step):
+def move_step(unit, step, corners):
     """
     函数内声明：
     本函数内部使用0 1 2 3，来定义上下左右的移动方向。
@@ -95,7 +95,25 @@ def move_step(unit, step):
                 return False, 0
         else:
             return False, 0
-    # # cut branchs and delete fail way
-    # if unit in unit.PASS_FIELD:
-    #     return False, 0
+    # cut branchs and delete fail way
+    for each in corners:
+        if unit.field[each[0]][each[1]] == 2:
+            return False, 0
+    if unit in unit.PASS_FIELD:
+        return False, 0
     return True, unit
+
+
+def search_step(q, v, corners, target, works):
+    for each in works:
+        for direct in range(4):
+            result = move_step(each, direct, corners)
+            if result[0]:
+                if check_goal(result[1].field, target):
+                    v.value = 1
+                    q.put(result[1])
+                else:
+                    q.put(result[1])
+            else:
+                continue
+
