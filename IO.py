@@ -51,6 +51,6 @@ def answer(way):
             print('R', end=' ')
         elif each == 2:
             print('D', end=' ')
-        elif each == '3':
+        elif each == 3:
             print('L', end=' ')
     print()
