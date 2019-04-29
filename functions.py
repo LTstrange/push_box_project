@@ -1,3 +1,5 @@
+import copy
+
 def Find_corners(field, target):
     corners = set()
     for ind_y, y in enumerate(field[1:-1]):
@@ -34,74 +36,75 @@ def move_step(unit, step, corners):
     其中 0对应向上U，1对应向右R，2对应向下D，3对应向左L
     :return: 移动是否有效, 新的状态
     """
-    point = unit.find_point()
+    copy_unit = copy.deepcopy(unit)
+    point = copy_unit.find_point()
     if step == 0:
-        if unit.field[point[0] - 1][point[1]] == 1:
-            unit.field[point[0] - 1][point[1]] = 3
-            unit.field[point[0]][point[1]] = 1
-            unit.way.append(step)
-        elif unit.field[point[0] - 1][point[1]] == 2:
-            if unit.field[point[0] - 2][point[1]] == 1:
-                unit.field[point[0] - 2][point[1]] = 2
-                unit.field[point[0] - 1][point[1]] = 3
-                unit.field[point[0]][point[1]] = 1
-                unit.way.append(step)
+        if copy_unit.field[point[0] - 1][point[1]] == 1:
+            copy_unit.field[point[0] - 1][point[1]] = 3
+            copy_unit.field[point[0]][point[1]] = 1
+            copy_unit.way.append(step)
+        elif copy_unit.field[point[0] - 1][point[1]] == 2:
+            if copy_unit.field[point[0] - 2][point[1]] == 1:
+                copy_unit.field[point[0] - 2][point[1]] = 2
+                copy_unit.field[point[0] - 1][point[1]] = 3
+                copy_unit.field[point[0]][point[1]] = 1
+                copy_unit.way.append(step)
             else:
                 return False, 0
         else:
             return False, 0
     elif step == 1:
-        if unit.field[point[0]][point[1] + 1] == 1:
-            unit.field[point[0]][point[1] + 1] = 3
-            unit.field[point[0]][point[1]] = 1
-            unit.way.append(step)
-        elif unit.field[point[0]][point[1] + 1] == 2:
-            if unit.field[point[0]][point[1] + 2] == 1:
-                unit.field[point[0]][point[1] + 2] = 2
-                unit.field[point[0]][point[1] + 1] = 3
-                unit.field[point[0]][point[1]] = 1
-                unit.way.append(step)
+        if copy_unit.field[point[0]][point[1] + 1] == 1:
+            copy_unit.field[point[0]][point[1] + 1] = 3
+            copy_unit.field[point[0]][point[1]] = 1
+            copy_unit.way.append(step)
+        elif copy_unit.field[point[0]][point[1] + 1] == 2:
+            if copy_unit.field[point[0]][point[1] + 2] == 1:
+                copy_unit.field[point[0]][point[1] + 2] = 2
+                copy_unit.field[point[0]][point[1] + 1] = 3
+                copy_unit.field[point[0]][point[1]] = 1
+                copy_unit.way.append(step)
             else:
                 return False, 0
         else:
             return False, 0
     elif step == 2:
-        if unit.field[point[0] + 1][point[1]] == 1:
-            unit.field[point[0] + 1][point[1]] = 3
-            unit.field[point[0]][point[1]] = 1
-            unit.way.append(step)
-        elif unit.field[point[0] + 1][point[1]] == 2:
-            if unit.field[point[0] + 2][point[1]] == 1:
-                unit.field[point[0] + 2][point[1]] = 2
-                unit.field[point[0] + 1][point[1]] = 3
-                unit.field[point[0]][point[1]] = 1
-                unit.way.append(step)
+        if copy_unit.field[point[0] + 1][point[1]] == 1:
+            copy_unit.field[point[0] + 1][point[1]] = 3
+            copy_unit.field[point[0]][point[1]] = 1
+            copy_unit.way.append(step)
+        elif copy_unit.field[point[0] + 1][point[1]] == 2:
+            if copy_unit.field[point[0] + 2][point[1]] == 1:
+                copy_unit.field[point[0] + 2][point[1]] = 2
+                copy_unit.field[point[0] + 1][point[1]] = 3
+                copy_unit.field[point[0]][point[1]] = 1
+                copy_unit.way.append(step)
             else:
                 return False, 0
         else:
             return False, 0
     elif step == 3:
-        if unit.field[point[0]][point[1] - 1] == 1:
-            unit.field[point[0]][point[1] - 1] = 3
-            unit.field[point[0]][point[1]] = 1
-            unit.way.append(step)
-        elif unit.field[point[0]][point[1] - 1] == 2:
-            if unit.field[point[0]][point[1] - 2] == 1:
-                unit.field[point[0]][point[1] - 2] = 2
-                unit.field[point[0]][point[1] - 1] = 3
-                unit.field[point[0]][point[1]] = 1
-                unit.way.append(step)
+        if copy_unit.field[point[0]][point[1] - 1] == 1:
+            copy_unit.field[point[0]][point[1] - 1] = 3
+            copy_unit.field[point[0]][point[1]] = 1
+            copy_unit.way.append(step)
+        elif copy_unit.field[point[0]][point[1] - 1] == 2:
+            if copy_unit.field[point[0]][point[1] - 2] == 1:
+                copy_unit.field[point[0]][point[1] - 2] = 2
+                copy_unit.field[point[0]][point[1] - 1] = 3
+                copy_unit.field[point[0]][point[1]] = 1
+                copy_unit.way.append(step)
             else:
                 return False, 0
         else:
             return False, 0
     # cut branchs and delete fail way
     for each in corners:
-        if unit.field[each[0]][each[1]] == 2:
+        if copy_unit.field[each[0]][each[1]] == 2:
             return False, 0
-    if unit in unit.PASS_FIELD:
+    if copy_unit in copy_unit.PASS_FIELD:
         return False, 0
-    return True, unit
+    return True, copy_unit
 
 
 def search_step(q, v, corners, target, works):
