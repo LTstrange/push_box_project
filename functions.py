@@ -1,5 +1,6 @@
 import copy
 
+
 def Find_corners(field, target):
     corners = set()
     for ind_y, y in enumerate(field[1:-1]):
